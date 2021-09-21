@@ -1,4 +1,6 @@
-# series-vuex
+# Séries Loved - Vuex
+
+- Aplicação desenvolvida com Vue.js, Vuex e Buefy
 
 ## Project setup
 ```
