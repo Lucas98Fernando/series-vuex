@@ -1,41 +1,43 @@
 <template>
-  <div class="container column is-4">
-    <div class="card px-4 py-4">
-      <div class="content">
-        <div class="columns is-centered py-4">
-          <h2>Faça o seu login</h2>
-        </div>
-        <form action="" method="POST">
-          <b-field label="E-mail">
-            <b-input
-              v-model="form.email"
-              type="email"
-              icon="email"
-              placeholder="lucas@email.com"
-            ></b-input>
-          </b-field>
-
-          <b-field label="Senha">
-            <b-input
-              v-model="form.password"
-              type="password"
-              icon="lock"
-              placeholder="*******"
-              password-reveal
-            ></b-input>
-          </b-field>
-
+  <div id="login-main-container" class="columns is-desktop is-vcentered">
+    <div class="container column is-4">
+      <div class="card px-5 py-5">
+        <div class="content">
           <div class="columns is-centered py-4">
-            <b-button
-              class="button is-primary"
-              type="button"
-              @click="login()"
-              icon-left="login"
-            >
-              Entrar
-            </b-button>
+            <h2>Faça o seu login</h2>
           </div>
-        </form>
+          <form method="POST">
+            <b-field label="E-mail">
+              <b-input
+                v-model="form.email"
+                type="email"
+                icon="email"
+                placeholder="lucas@email.com"
+              ></b-input>
+            </b-field>
+
+            <b-field label="Senha">
+              <b-input
+                v-model="form.password"
+                type="password"
+                icon="lock"
+                placeholder="*******"
+                password-reveal
+              ></b-input>
+            </b-field>
+
+            <div class="columns is-centered py-4">
+              <b-button
+                class="button is-primary"
+                type="button"
+                @click="login()"
+                icon-left="login"
+              >
+                Entrar
+              </b-button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -62,7 +64,7 @@ export default {
     async login() {
       try {
         await this.ActionDoLogin(this.form);
-        this.$router.push({ name: "home" });
+        this.$router.push({ name: "Home" });
       } catch (erro) {
         if (erro.data) {
           alert(erro.data.message);
@@ -74,3 +76,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#login-main-container {
+  height: 98vh;
+
+  .card {
+    border-radius: 15px;
+  }
+}
+</style>

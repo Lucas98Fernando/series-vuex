@@ -2,6 +2,7 @@
 
 // Importando todos os types das mutations
 import services from '@/http'
+import * as storage from '../storage'
 import * as types from './mutation-types'
 
 // O parâmetro dispatch serve para chamar um action dentro de outra
@@ -27,5 +28,7 @@ export const ActionSetUser = ({
 export const ActionSetToken = ({
     commit
 }, payload) => {
+    storage.setLocalToken(payload)
+    storage.setHeaderToken(payload)
     commit(types.SET_TOKEN, payload)
 }
