@@ -2,7 +2,11 @@
 
 export default {
     login: {
-        method: 'POST',
+        method: 'post',
         url: 'login'
+    },
+    loadSession: {
+        method: 'get',
+        url: 'load-session'
     }
 }

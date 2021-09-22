@@ -7,6 +7,6 @@ import {
 } from '../modules/auth'
 
 export default [
-    ...home,
     ...auth,
+    ...home,
 ]
