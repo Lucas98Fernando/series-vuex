@@ -19,6 +19,8 @@
         <span>Todas séries</span>
       </a>
     </div>
+
+    <b-button class="btn-exit" size="is-medium" icon-right="logout" />
   </div>
 </template>
 
@@ -85,6 +87,11 @@ export default {
     .link-item:last-child {
       background-color: #f03a5f;
     }
+  }
+  .btn-exit {
+    position: absolute;
+    top: 40px;
+    right: 40px;
   }
 }
 </style>
