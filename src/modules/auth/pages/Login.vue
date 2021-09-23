@@ -1,5 +1,5 @@
 <template>
-  <div id="login-main-container" class="columns is-desktop is-vcentered">
+  <div id="login-main-container">
     <div class="container column is-4">
       <div class="card px-5 py-5">
         <div class="content">
@@ -79,7 +79,10 @@ export default {
 
 <style lang="scss" scoped>
 #login-main-container {
-  height: 98vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .card {
     border-radius: 15px;

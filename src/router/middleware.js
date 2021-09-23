@@ -1,8 +1,7 @@
 import store from '../store'
 
 export default async (to, from, next) => {
-    document.title = to.name !== null ? `${to.name} - Séries Loved` : 'Séries Loved'
-
+    document.title =  `${to.name} - Séries Loved`
     // Verificando se o usuário está logado
     if (to.name !== 'Login' && !store.getters['auth/hasToken']) {
         try {
