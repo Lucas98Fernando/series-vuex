@@ -26,13 +26,18 @@
       </a>
     </div>
 
-    <b-button class="btn-exit" size="is-medium" icon-right="logout" />
+    <b-button
+      class="btn-exit"
+      size="is-medium"
+      icon-right="logout"
+      @click="logout()"
+    />
   </div>
 </template>
 
 <script>
 // Importando o state da store
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "Home",
@@ -43,6 +48,13 @@ export default {
       return this.$router.options.routes.filter(
         (route) => route.meta && route.meta.showNavbar
       );
+    },
+  },
+  methods: {
+    ...mapActions("auth", ["ActionSignOut"]),
+    logout() {
+      this.ActionSignOut();
+      this.$router.push({ name: "Login" });
     },
   },
 };
