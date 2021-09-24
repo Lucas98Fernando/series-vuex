@@ -9,8 +9,13 @@ import {
     routes as watchlist
 } from '../pages/watchlist'
 
+import {
+    routes as showSerie
+} from '../pages/show-serie'
+
 export default [
     ...auth,
     ...home,
-    ...watchlist
+    ...watchlist,
+    ...showSerie
 ]

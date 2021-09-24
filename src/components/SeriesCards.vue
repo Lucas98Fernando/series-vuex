@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <router-link :to="{ name: 'Visualizar série', params: { id: series.id } }">
     <div class="card-image">
       <figure class="image is-4by3">
         <img :src="series.image" alt="Imagem da série" />
@@ -12,10 +12,10 @@
         </div>
       </div>
       <div class="content">
-        <button class="button is-primary">Adicionar</button>
+        <button class="button is-primary mt-4">Adicionar</button>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -29,3 +29,16 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.card {
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transition: 0.3 ease-in-out;
+    scale: 1.05;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+</style>

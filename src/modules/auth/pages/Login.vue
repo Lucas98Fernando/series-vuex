@@ -3,6 +3,11 @@
     <div class="container column is-4">
       <div class="card px-5 py-5">
         <div class="content">
+          <div class="columns is-centered">
+            <div class="column has-text-centered is-2">
+              <img src="@/assets/img/series.png" width="50" />
+            </div>
+          </div>
           <div class="columns is-centered py-4">
             <h2>Faça o seu login</h2>
           </div>

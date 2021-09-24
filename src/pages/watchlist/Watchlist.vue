@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1>Watchlist</h1>
+  <div class="container mt-4">
+    <h1 class="is-size-2 mb-4">Watchlist</h1>
     <div class="columns">
-      <div class="column" v-for="(item, i) in watchlist" :key="i">
+      <div class="column is-3" v-for="(item, i) in watchlist" :key="i">
         <series-card :series="item"></series-card>
       </div>
     </div>
