@@ -16,6 +16,8 @@
           <button
             class="button mb-3"
             :class="series.watchlist ? 'is-danger' : 'is-success'"
+            type="button"
+            @click.prevent="toggleWatchlist()"
           >
             <span class="icon is-small">
               <i class="material-icons mdi-48">
@@ -27,16 +29,18 @@
             </span>
           </button>
           <button
-            class="button is-outlined"
-            :class="series.watchedlist ? 'is-danger' : 'is-primary'"
+            class="button"
+            :class="series.watched ? 'is-danger' : 'is-primary'"
+            @click.prevent="toggleWatchedlist()"
           >
             <span class="icon is-small">
               <i class="material-icons mdi-48">
-                {{ series.watchedlist ? "remove" : "playlist_add_check" }}
+                {{ series.watched ? "remove" : "playlist_add_check" }}
               </i>
             </span>
             <span>
-              {{ series.watchedlist ? "Remover da" : "Adicionar à" }} watchedlist
+              {{ series.watched ? "Remover da" : "Adicionar à" }}
+              watchedlist
             </span>
           </button>
         </div>
@@ -46,12 +50,77 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "SeriesBox",
   props: {
     series: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    ...mapActions("watched", [
+      "ActionAddWatched",
+      "ActionDeleteFromWatched",
+      "ActionFindWatched",
+    ]),
+    ...mapActions("watchlist", [
+      "ActionAddWatchlist",
+      "ActionDeleteFromWatchlist",
+      "ActionFindWatchlist",
+    ]),
+    // Método para adicionar e remover items da watchlist
+    async toggleWatchlist() {
+      try {
+        // Se o item já estiver na lista de assistidos, ele será removido
+        if (this.series.watched) {
+          await this.ActionDeleteFromWatched(this.series.id);
+        }
+
+        if (this.series.watchlist) {
+          await this.ActionDeleteFromWatchlist(this.series.id);
+          // Se o procedimento der certo, vai atualizar a lista
+          this.ActionFindWatchlist();
+          alert("Removida com sucesso!");
+        } else {
+          await this.ActionAddWatchlist({ serieId: this.series.id });
+          // Se o procedimento der certo, vai atualizar a lista
+          this.ActionFindWatchlist();
+          alert("Adicionada com sucesso!");
+        }
+        // Se o procedimento der certo, vai atualizar a lista
+        this.ActionFindWatchlist();
+      } catch (err) {
+        console.log(err);
+        alert("Ocorreu um erro inesperado");
+      }
+    },
+    // Método para adicionar e remover items da watchedlist
+    async toggleWatchedlist() {
+      try {
+        // Se o item já estiver na lista de quero assistir, ele será removido
+        if (this.series.watchlist) {
+          await this.ActionDeleteFromWatchlist(this.series.id);
+        }
+
+        if (this.series.watched) {
+          await this.ActionDeleteFromWatched(this.series.id);
+          // Se o procedimento der certo, vai atualizar a lista
+          this.ActionFindWatched();
+          alert("Removida com sucesso!");
+        } else {
+          await this.ActionAddWatched({ serieId: this.series.id });
+          // Se o procedimento der certo, vai atualizar a lista
+          this.ActionFindWatched();
+          alert("Adicionada com sucesso!");
+        }
+        // Se o procedimento der certo, vai atualizar a lista
+        this.ActionFindWatched();
+      } catch (err) {
+        console.log(err);
+        alert("Ocorreu um erro inesperado");
+      }
     },
   },
 };

@@ -10,11 +10,11 @@
       <template #start>
         <b-navbar-item>
           <router-link
+            exact
             :to="{ name: route.name }"
             :key="i"
             class="mr-4"
             v-for="(route, i) in routes"
-            exact
             exact-active-class="active"
             >{{ route.meta.title }}
           </router-link>

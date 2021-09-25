@@ -14,3 +14,13 @@ export const ActionFindWatchlist = ({
         commit(types.SET_WATCHLIST, res.data.data)
     })
 )
+
+export const ActionAddWatchlist = (context, payload) => {
+    services.watchlist.addWatchlist(payload)
+}
+
+export const ActionDeleteFromWatchlist = (context, payload) => {
+    services.watchlist.deleteFromWatchlist({
+        id: payload
+    })
+}

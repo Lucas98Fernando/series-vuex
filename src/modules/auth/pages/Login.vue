@@ -92,6 +92,22 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background-image: url("../../../assets/img/series-bg-login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
 
   .card {
     border-radius: 15px;
