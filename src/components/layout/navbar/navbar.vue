@@ -12,6 +12,7 @@
           <router-link
             :to="{ name: route.name }"
             :key="i"
+            class="mr-4"
             v-for="(route, i) in routes"
             exact
             exact-active-class="active"

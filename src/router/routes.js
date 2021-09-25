@@ -13,9 +13,19 @@ import {
     routes as showSerie
 } from '../pages/show-serie'
 
+import {
+    routes as watched
+} from '../pages/watched'
+
+import {
+    routes as series
+} from '../pages/series'
+
 export default [
     ...auth,
     ...home,
     ...watchlist,
-    ...showSerie
+    ...showSerie,
+    ...watched,
+    ...series
 ]

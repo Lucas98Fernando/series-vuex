@@ -1,10 +1,10 @@
 export default [{
     path: '/watchlist',
-    name: 'Watchlist',
+    name: 'Quero assistir',
     component: () => import( /* webpackChunkname: "watchlist" */ "./Watchlist.vue"),
     meta: {
         showNavbar: true,
-        title: 'Watchlist',
+        title: 'Quero assistir',
         icon: 'playlist_play',
         label: 'Quero assistir'
     },

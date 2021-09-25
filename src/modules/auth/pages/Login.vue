@@ -36,6 +36,7 @@
                 class="button is-primary"
                 type="button"
                 @click="login()"
+                :loading="btnLoading"
                 icon-left="login"
               >
                 Entrar
@@ -56,9 +57,10 @@ export default {
   name: "Login",
   data() {
     return {
+      btnLoading: false,
       form: {
-        email: "",
-        password: "",
+        email: "mblader0@umich.edu",
+        password: "pOKJof0PWZ",
       },
     };
   },
@@ -68,10 +70,12 @@ export default {
     // Método de autenticação
     async login() {
       try {
+        this.btnLoading = true;
         await this.ActionDoLogin(this.form);
         this.$router.push({ name: "Home" });
       } catch (erro) {
         if (erro.data) {
+          this.btnLoading = false;
           alert(erro.data.message);
         } else {
           alert("Não foi possível fazer login");

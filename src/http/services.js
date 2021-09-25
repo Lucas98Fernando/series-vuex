@@ -10,8 +10,18 @@ import {
     services as showSerie
 } from '@/pages/show-serie'
 
+import {
+    services as watched
+} from '@/pages/watched'
+
+import {
+    services as series
+} from '@/pages/series'
+
 export default {
     auth,
     watchlist,
-    showSerie
+    showSerie,
+    watched,
+    series
 }
